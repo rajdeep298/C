@@ -90,4 +90,25 @@ void main()
   }
 }
 /* 
+
+ Enter the number of elements on the array:10
+
+ Enter the key element to search/insert:234
+
+ If you want to insert the item press 1 else 0: 
+-->>1
+
+  The elements of the array are-0:0
+  The elements of the array are-1:0
+  The elements of the array are-2:0
+  The elements of the array are-3:0
+  The elements of the array are-4:234
+  The elements of the array are-5:0
+  The elements of the array are-6:0
+  The elements of the array are-7:0
+  The elements of the array are-8:0
+  The elements of the array are-9:0
+ Element placed/found at index: 4
+ If you want to continue the process the press Y or y
+-->>
 */
