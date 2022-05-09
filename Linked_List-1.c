@@ -28,10 +28,10 @@ void backward_traversal_of_the_linked_list()// for backward traversal in the lin
     p->next=NULL;
     while(q!=NULL)
     {
-        r=q->next;
-        q->next=p;
-        p=q;
-        q=r; 
+      r=q->next;
+      q->next=p;
+      p=q;
+      q=r;
     }
     start=p;
     display();
