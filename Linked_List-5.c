@@ -13,38 +13,28 @@ node*create_first_node();
 node*create_other_node();
 void display();
 void display_checker();
-node*create_first_node()//creates a node.
+node*create_node()//creates a node.
 {
   node*p;
   p=(node*)malloc(sizeof(node));
   printf("\n Enter the info:");
   scanf("%d",&p->info);
-  p->next=start;
+  p->next=NULL;
   count++;
   return (p); 
-}
-node*create_other_node()
-{
-    node*p;
-    p=(node*)malloc(sizeof(node));
-    printf("\n Enter the info:");
-    scanf("%d",&p->info);
-    p->next=NULL;
-    count++;
-    return (p); 
 }
 void insert_at_end()
 {
    node *p,*q;
    if(start==NULL)
    {
-       p=create_first_node();
+       p=create_node();
        start=p;
        p->next=start;
    }
    else
    {
-        p=create_other_node();
+        p=create_node();
         q=start;
         while(q->next!=start)
         {
