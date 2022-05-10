@@ -4,10 +4,12 @@
 #include<stdlib.h>
 void circular_queue_insertion();
 void circular_queue_deletion();
-void circular_queue_display();
+void circular_queue_display_deletion(int *a);
+void circular_queue_display_insertion(int *a);
 int rear=-1;
 int front=-1;
 int counter=0;
+int plug=0;
 void circular_queue_insertion(int *a, int max)
 {
    int value;
@@ -23,7 +25,8 @@ void circular_queue_insertion(int *a, int max)
        a[rear]=value;
        counter++;
    }
-   circular_queue_display(a);
+   plug=0;
+   circular_queue_display_insertion(a);
 }
 void circular_queue_deletion(int *a, int max)
 {
@@ -44,12 +47,22 @@ void circular_queue_deletion(int *a, int max)
         front=-1;
         rear=-1;
     }
-    circular_queue_display(a);
+    plug=1;
+    circular_queue_display_deletion(a);
 }
-void circular_queue_display(int *a)
+void circular_queue_display_insertion(int *a)
 {
     int i;
     for(i=((front>=0) ? front :0);i<=rear;i++)
+    {
+        printf("\nElement-%d:%d",i,a[i]);
+    }
+    printf("\nThis was output of your chosen opeartion :) .");
+}
+void circular_queue_display_deletion(int *a)
+{
+    int i;
+    for(i=((front>=0) ? front :0)+1;i<=rear;i++)
     {
         printf("\nElement-%d:%d",i,a[i]);
     }
@@ -74,8 +87,14 @@ void main()
                 circular_queue_deletion(a,max);
                 break;
         case 3:printf("\nDisplay-->>");
-                circular_queue_display(a);
-                break;
+                if(plug==0)
+                {
+                    circular_queue_display_insertion(a);
+                }
+                else if(plug==1)
+                {
+                    circular_queue_display_deletion(a);
+                }
         case 4:printf("\nExiting the Programme .......");
                exit(0);
                break;
