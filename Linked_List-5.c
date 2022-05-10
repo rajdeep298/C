@@ -14,6 +14,7 @@ node*create_other_node();
 void display();
 void display_checker();
 void insert_after_a_node( int key );
+void insert_before_a_node(int key);
 node*create_node()//creates a node.
 {
   node*p;
