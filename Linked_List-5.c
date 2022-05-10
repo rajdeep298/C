@@ -13,6 +13,7 @@ node*create_first_node();
 node*create_other_node();
 void display();
 void display_checker();
+void insert_after_a_node( int key );
 node*create_node()//creates a node.
 {
   node*p;
@@ -79,12 +80,89 @@ void display_checker()
         display_2();
     }
 }
+void insert_at_beginning()
+{
+    node *i;
+    insert_at_end();
+    i=start;
+    while(start->next!=i)
+    {
+        start=start->next;
+    }
+    count++;
+    display_checker();
+}
+void insert_after_a_node( int key )// inserting node after a desired node
+{
+   node*p,*q,*r;
+   p=create_node();
+   if(start==NULL)
+   {
+       start=p;
+   }
+   else
+   {
+       q=start;
+       while(q!=NULL && q->info!=key)
+       {
+           r=q;
+           q=q->next;
+       }
+       if(q!=NULL)
+       {
+           p->next=q->next;
+           q->next=p;
+       }
+       else
+       {
+           r->next=p;
+       }
+   }
+   count++;
+   display_checker();
+}
+void insert_before_a_node(int key)// inserting a node before a desired node
+{
+    node *p,*q,*r;
+    p=create_node();
+    if(start==NULL)
+    {
+        start=p;
+    }
+    else
+    {
+        q=start;
+        while(q!=NULL && q->info!=key)
+        {
+            r=q;
+            q=q->next;
+        } 
+        if(q!=NULL)
+        {
+            p->next=q;
+            r->next=p;
+        }
+        else
+        {
+            r->next=p;
+        }
+    }
+    count++;
+    display_checker();
+}
 void main()
 {
+    int key,key2;
     start=NULL;
-    printf("Adress of Start:%x\n",start);
     insert_at_end();
     insert_at_end();
     insert_at_end();
     insert_at_end();
+    insert_at_beginning();
+    printf("\n Enter the info of a node after which you want to insert the new node:");
+    scanf("%d",&key);
+    insert_after_a_node(key);
+    printf("\n Enter the info of a node before which you want to insert the new node:");
+    scanf("%d",&key);
+    insert_before_a_node(key);
 }
