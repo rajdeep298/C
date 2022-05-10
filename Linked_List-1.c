@@ -45,12 +45,7 @@ void forward_traversal_of_the_linked_list()//for forward traversal in the linked
     }
     else
     {
-        q=start;
-        while(q!=NULL)
-        {
-            printf("[[info->%d|address_of_next_node->(%x)]-->>]address of this node->(%x)]--->>>\n",q->info,q->next,q);
-            q=q->next;
-        }
+        display();
     }
 }
 void delete_last_node()// deleting the last node of the linked list
