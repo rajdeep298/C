@@ -15,6 +15,7 @@ node*create_other_node();
 void delete_first_node();
 void display();
 void display_checker();
+void backward_traversal();
 void insert_after_a_node( int key );
 void insert_before_a_node(int key);
 void delete_first_node()
@@ -219,6 +220,34 @@ void delete_last_node()
         display_checker();
     }
 }
+void backward_traversal()
+{
+    node*p,*q,*r,*s,*t;
+    s=start;
+    p=start;
+    while(s->next!=start)
+    {
+        s=s->next;
+    }
+    s->next=NULL;
+    q=p->next;
+    p->next=NULL;
+    while(q!=NULL)
+    {
+        r=q->next;
+        q->next=p;
+        p=q;
+        q=r;
+    }
+    start=p;
+    t=start;
+    while(t->next!=NULL)
+    {
+        t=t->next;
+    }
+    t->next=start;
+    display_checker();
+}
 void main()
 {
     int key;
@@ -239,4 +268,5 @@ void main()
     scanf("%d",&key);
     delete_node(key);
     delete_last_node();
+    backward_traversal();
 }
