@@ -252,21 +252,29 @@ void main()
 {
     int key;
     start=NULL;
+    printf("\nInsertion of last node-->>");
     insert_at_end();
+    printf("\nInsertion of last node-->>");
     insert_at_end();
+    printf("\nInsertion of last node-->>");
     insert_at_end();
+    printf("\nInsertion of last node-->>");
     insert_at_end();
+    printf("\n Insertion at beginning-->>");
     insert_at_beginning();
-    printf("\n Enter the info of a node after which you want to insert the new node:");
+    printf("\n Enter the info of a node after which you want to insert the new node-->>");
     scanf("%d",&key);
     insert_after_a_node(key);
-    printf("\n Enter the info of a node before which you want to insert the new node:");
+    printf("\n Enter the info of a node before which you want to insert the new node-->>");
     scanf("%d",&key);
     insert_before_a_node(key);
+    printf("\n Deletion if first node-->>");
     delete_first_node();
-    printf("\n Enter the number to delete: ");
+    printf("\n Enter the number to delete-->>");
     scanf("%d",&key);
     delete_node(key);
+    printf("\n Deletion of last node-->>");
     delete_last_node();
+    printf("\n Backward Traversal-->>");
     backward_traversal();
 }
