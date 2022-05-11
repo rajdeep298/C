@@ -9,12 +9,36 @@ struct node
 }; typedef struct node node;
 node *start;
 int count=0;
+void delete_node(int key);
 node*create_first_node();
 node*create_other_node();
+void delete_first_node();
 void display();
 void display_checker();
 void insert_after_a_node( int key );
 void insert_before_a_node(int key);
+void delete_first_node()
+{
+    node *p,*q,*r;
+    if(start==NULL)
+    {
+        printf("\n Linked List Undefined :(\n");
+    }
+    else
+    {
+        q=start;
+        r=start;
+        while(q->next!=start)
+        {
+            q=q->next;
+        }
+        start=start->next;
+        q->next=start;
+        free(r);
+    }
+    count++;
+    display_checker();
+}
 node*create_node()//creates a node.
 {
   node*p;
@@ -151,9 +175,30 @@ void insert_before_a_node(int key)// inserting a node before a desired node
     count++;
     display_checker();
 }
+void delete_node(int key)// delete a desired node from linked list
+{
+    node*p,*q;
+    p=start;
+    while(p->info!=key && p!=NULL)
+    {
+        q=p;
+       p=p->next;
+    }
+    if(p==NULL)
+    {
+        printf("\n No such node.\n");
+    }
+    else
+    {
+        printf("%d is delted",p->info);
+        q->next=p->next;
+    }
+    free(p);
+    display();
+}
 void main()
 {
-    int key,key2;
+    int key;
     start=NULL;
     insert_at_end();
     insert_at_end();
@@ -166,4 +211,8 @@ void main()
     printf("\n Enter the info of a node before which you want to insert the new node:");
     scanf("%d",&key);
     insert_before_a_node(key);
+    delete_first_node();
+    printf("\n Enter the number to delete: ");
+    scanf("%d",&key);
+    delete_node(key);
 }
