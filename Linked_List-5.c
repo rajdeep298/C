@@ -36,7 +36,7 @@ void delete_first_node()
         q->next=start;
         free(r);
     }
-    count++;
+    count--;
     display_checker();
 }
 node*create_node()//creates a node.
@@ -181,7 +181,7 @@ void delete_node(int key)// delete a desired node from linked list
     p=start;
     while(p->info!=key && p!=NULL)
     {
-        q=p;
+       q=p;
        p=p->next;
     }
     if(p==NULL)
@@ -192,9 +192,32 @@ void delete_node(int key)// delete a desired node from linked list
     {
         printf("%d is delted",p->info);
         q->next=p->next;
+        free(p);
+        count--;
+        display_checker();
     }
-    free(p);
-    display();
+
+}
+void delete_last_node()
+{
+    node*p,*q,*r;
+    if(start==NULL)
+    {
+        printf("\nLinked List Underflow :(\n");
+    }
+    else
+    {
+        q=start;
+        while(q->next!=start)
+        {
+            r=q;
+            q=q->next;            
+        }
+        r->next=start;
+        free(q);
+        count --;
+        display_checker();
+    }
 }
 void main()
 {
@@ -215,4 +238,5 @@ void main()
     printf("\n Enter the number to delete: ");
     scanf("%d",&key);
     delete_node(key);
+    delete_last_node();
 }
