@@ -6,13 +6,14 @@ struct node
 {
   int info;
   struct node *next;
-}; typedef struct node node;
+}; typedef struct node node;    
 node *start;
 int count=0;
 void delete_node(int key);
 node*create_first_node();
 node*create_other_node();
 void delete_first_node();
+void insertion_at_end();
 void display();
 void display_checker();
 void backward_traversal();
@@ -53,15 +54,14 @@ node*create_node()//creates a node.
 void insert_at_end()
 {
    node *p,*q;
+   p=create_node();
    if(start==NULL)
    {
-       p=create_node();
        start=p;
        p->next=start;
    }
    else
    {
-        p=create_node();
         q=start;
         while(q->next!=start)
         {
@@ -120,7 +120,7 @@ void insert_at_beginning()
 }
 void insert_after_a_node( int key )// inserting node after a desired node
 {
-   node*p,*q,*r;
+   node*p,*q,*r,*s;
    p=create_node();
    if(start==NULL)
    {
@@ -128,14 +128,26 @@ void insert_after_a_node( int key )// inserting node after a desired node
    }
    else
    {
-       q=start;
-       while(q!=NULL && q->info!=key)
+       s=start;
+       q=s->next;
+       if(s->info==key && s->next!=start)
+       {
+           q=s;
+           goto next;
+       }
+       else if(s->info==key && s->next==start)
+       {
+           insert_at_end();
+           exit(0);
+       }
+       while(q!=start&& q->info!=key)
        {
            r=q;
            q=q->next;
        }
        if(q!=NULL)
        {
+           next:
            p->next=q->next;
            q->next=p;
        }
@@ -149,22 +161,31 @@ void insert_after_a_node( int key )// inserting node after a desired node
 }
 void insert_before_a_node(int key)// inserting a node before a desired node
 {
-    node *p,*q,*r;
-    p=create_node();
+    node *p,*q,*r,*s;
     if(start==NULL)
     {
+        p=create_node();
         start=p;
     }
     else
     {
         q=start;
-        while(q!=NULL && q->info!=key)
+        s=start;
+        q=s->next;
+        if(s->info==key)
+        {
+           insert_at_beginning();
+           exit(0);
+        }
+        p=create_node();
+        while(q!=start && q->info!=key)
         {
             r=q;
             q=q->next;
         } 
         if(q!=NULL)
         {
+            next:
             p->next=q;
             r->next=p;
         }

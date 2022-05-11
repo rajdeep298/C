@@ -86,14 +86,21 @@ void delete_first_node()// deleting the first node of the linked list
 void insert_before_a_node(int key)// inserting a node before a desired node
 {
     node *p,*q,*r;
-    p=create_node();
+    
     if(start==NULL)
     {
+        p=create_node();
         start=p;
     }
     else
     {
         q=start;
+        if(q->info==key)
+        {
+            insert_at_beginning();
+            exit(0);
+        }
+        p=create_node();
         while(q!=NULL && q->info!=key)
         {
             r=q;
@@ -219,7 +226,6 @@ void main()
     start=NULL;
     int num,del,option,key,option2;
     char ch;
-    system("cls");
     printf("\n Input Number of nodes:");
     scanf("%d",&num);
     while(num)
