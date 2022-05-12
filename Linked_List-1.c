@@ -221,7 +221,7 @@ void display()//displays the linked list.
         p=p->next;
     }
 }
-void main()
+void main() 
 {
     start=NULL;
     int num,del,option,key,option2;
