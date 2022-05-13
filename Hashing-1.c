@@ -24,11 +24,6 @@ int Linear_probing(int *H,int k)
     int flag=0,index;
     int i;
     index=hash_function(k);
-    if(index>=n)
-    {
-        printf("\n Error:Index value out of range\n");
-        exit(0);
-    }
     if(k==*(H+index))
     {
         return index;

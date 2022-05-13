@@ -12,7 +12,7 @@ int hash_function(int a)
     val=a%n+1;
     return val;
 }
-void display(int*a,int n)//inserting element in the array
+void display(int*a)//inserting element in the array
 {
     int i;
     for(i=0;i<n;i++)
@@ -43,11 +43,6 @@ int Random_probing(int *H,int k)
     int flag=0,index;
     int i;
     index=hash_function(k);
-    if(index>=n)
-    {
-        printf("\n Error:Index value out of range\n");
-        exit(0);
-    }
     if(k==*(H+index))
     {
         return index;
@@ -91,9 +86,9 @@ void main()
   system("cls");
   printf("\n Enter the number of elements on the array:");
   scanf("%d",&n);
+  next:
   printf("\n Enter a value for m(it should be a prime number):");
   scanf("%d",&m);
-  next:
   if(prime(m)!=0)
   {
     printf("\nPlease Enter a prime Number: ");  
@@ -106,7 +101,7 @@ void main()
   printf("\n-->>");
   scanf("%d",&insert);
   i=Random_probing(a,k);
-  display(a,n);
+  display(a);
   printf("\n Element found at index: %d",i);
   printf("\n If you want to continue the process the press Y or y");
   printf("\n-->>");
