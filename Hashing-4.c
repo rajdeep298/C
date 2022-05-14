@@ -84,7 +84,7 @@ node* Open_Hashing(node *h[],int k)
             flag=1;
             counter++;
             printf("\nValue is present at:");
-            printf("\nH[%d]:",index);
+            printf("\nIndex-%d|H[%d]:",index,index);
             return ptr;
         }
         else
@@ -256,7 +256,7 @@ Enter the element you want to insert/search:12
 If you want to insert press 1:0
 
 Value is present at:
-H[2]:Node.No:1->[Info->12|Address_of_next_node->(54711470)]-->>](address of this node->(54711410))---->>>>
+Index-2|H[2]:Node.No:1->[Info->12|Address_of_next_node->(54711470)]-->>](address of this node->(54711410))---->>>>
 
 H[0]:
 H[1]:[Info->1|Address_of_next_node->(0)]-->>](address of this node->(547113f0))---->>>>
@@ -281,7 +281,7 @@ Enter the element you want to insert/search:35
 If you want to insert press 1:0
 
 Value is present at:
-H[5]:Node.No:3->[Info->35|Address_of_next_node->(0)]-->>](address of this node->(54711490))---->>>>
+Index-5|H[5]:Node.No:3->[Info->35|Address_of_next_node->(0)]-->>](address of this node->(54711490))---->>>>
 
 H[0]:
 H[1]:[Info->1|Address_of_next_node->(0)]-->>](address of this node->(547113f0))---->>>>
