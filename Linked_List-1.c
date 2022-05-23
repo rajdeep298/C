@@ -95,7 +95,7 @@ void insert_before_a_node(int key)// inserting a node before a desired node
     else
     {
         q=start;
-        if(q->info==key)
+        if(start->info==key)
         {
             insert_at_beginning();
             exit(0);
