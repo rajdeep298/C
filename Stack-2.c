@@ -3,10 +3,10 @@
 #include<stdlib.h>
 #include<conio.h>
 void display_stack();
-void push_stack(int n);
+void push_stack();
 void pop_stack();
 int top=-1;
-int a[];
+int a[]={0};
 void display_stack()
 {
     int i;
@@ -16,7 +16,7 @@ void display_stack()
     }
     printf("\n This was output of your chosen opeartion :) .");
 }
-void push_stack(int n)
+void push_stack()
 {
    int value;
     top=top+1;
@@ -46,15 +46,13 @@ void main()
     int n,a[100];
     char ch;
     system("cls");
-    printf("\n Enter the limit of the stack:");
-    scanf("%d",&n);
     start:
     printf("\nPress 1 to PUSH\nPress 2 for POP\nPress 3 for Displaying the Stack\nPress 4 for exit the process.");
     printf("\n-->>");
     scanf("%d",&choice);
 switch(choice)
 {
-    case 1: push_stack(n);
+    case 1: push_stack();
             break;
     case 2: pop_stack();
             break;
