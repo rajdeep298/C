@@ -6,7 +6,7 @@ void display_stack();
 void push_stack(int n);
 void pop_stack();
 int top=-1;
-int a[];
+int a[]={0};
 void display_stack()
 {
     int i;
