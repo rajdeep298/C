@@ -41,9 +41,8 @@ void pop_stack()
     }
     else
     {
-      value=a[top];
+      printf("\nValue extracted from stack: %d",a[top]);
       top=top-1;
-      printf("\nValue extracted from stack: %d",value);
     }
     display_stack();
 }

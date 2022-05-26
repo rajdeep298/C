@@ -6,7 +6,7 @@ void display_stack();
 void push_stack();
 void pop_stack();
 int top=-1;
-int *a;
+int *a=NULL;
 void display_stack()
 {
     int i;
@@ -18,49 +18,64 @@ void display_stack()
 }
 void push_stack()
 {
+    int value;
     if(a==NULL)
     {
         a=(int*)malloc(sizeof(int));
         printf("\nEnter Value: ");
-        scanf("%d",*(a+(++top)));
+        scanf("%d",&value);
+        a[++top]=value;
     }
     else
     {
         a=realloc(a,sizeof(int));
         printf("\nEnter Value: ");
-        scanf("%d",*(a+(++top)));
+        scanf("%d",value);
+        a[++top]=value;
     }
     display_stack();
 }
 void pop_stack()
 {
-    
+    if(a==NULL)
+    {
+        printf("\nStack Underflow!\n");
+    }
+    else
+    {
+        printf("\nValue extracted from stack: %d",a[top]);
+        top=top-1;
+    }
+    if(top<0)
+    {
+        a=NULL;
+    }
 }
 void main()
 {
     int choice;
     int a[100];
     char ch;
-    system("cls");
     start:
     printf("\nPress 1 to PUSH\nPress 2 for POP\nPress 3 for Displaying the Stack\nPress 4 for exit the process.");
     printf("\n-->>");
     scanf("%d",&choice);
-switch(choice)
-{
-    case 1: push_stack();
-            break;
-    case 2: pop_stack();
-            break;
-    case 3:display_stack();
-            break;
-    case 4:exit(0);
-	       break;
-    default: printf("\n Enter the correct choice");                             
+    switch(choice)
+    {
+        case 1: push_stack();
+                break;
+        case 2: pop_stack();
+                break;
+        case 3:display_stack();
+               break;
+        case 4:exit(0);
+	           break;
+        default: printf("\n Enter the correct choice");                             
 }
     printf("\n If you want to continue, press Y or y ");
     printf("\n-->>");
     ch=getch();
+
     if(ch=='y'|| ch=='Y')
     {
         goto start;
