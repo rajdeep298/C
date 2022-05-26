@@ -10,7 +10,7 @@ void main()
   int *ptr=NULL,n,i;
   printf("\n Enter the number of elements in the array: ");
   scanf("%d",&n);
-  base = (int*)malloc(n*sizeof(int));
+  base = (int*)malloc(sizeof(int));
   for(i=0;i<n;i++)
   {
     printf("\nEnter the element: ");
