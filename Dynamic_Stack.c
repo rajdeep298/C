@@ -3,15 +3,18 @@
 
 int *item;
 int top = -1;
-
+void push(int value);
+void pop();
+void display();
 void push(int value) {
     if (item == NULL) {
         item = (int *)malloc(sizeof(int));
         item[++top] = value; 
     } else {
-        item = realloc(item, sizeof(int));
+        item = realloc(item,(top+1+sizeof(int)));
         item[++top] = value;
     }
+    display();
 }
 
 void pop() {
@@ -19,9 +22,9 @@ void pop() {
         printf("\nStack underflow");
     } else {
         printf("\nItem popped: %d" ,item[top--]);
-
     }
     printf("\n");
+    display();
 }
 
 void display() {

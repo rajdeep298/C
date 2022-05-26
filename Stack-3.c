@@ -6,9 +6,7 @@ void display_stack();
 void push_stack();
 void pop_stack();
 int top=-1;
-int a[100];
-int n;
-int counter=1;
+int *a;
 void display_stack()
 {
     int i;
@@ -20,32 +18,23 @@ void display_stack()
 }
 void push_stack()
 {
-   int value;
-   if(top>=n-1)
-   {
-       counter++;
-       realloc(a,counter*n*sizeof(int));
-   }
-    top=top+1;
-    printf("\n Enter the value to push: ");
-    scanf("%d",&value);
-    a[top]=value;
-   display_stack();
-}
-void pop_stack()
-{
-    int value;
-    if(top<0)
+    if(a==NULL)
     {
-        printf("\n Stack underflow");
+        a=(int*)malloc(sizeof(int));
+        printf("\nEnter Value: ");
+        scanf("%d",*(a+(++top)));
     }
     else
     {
-      value=a[top];
-      top=top-1;
-      printf("\nValue extracted from stack: %d",value);
+        a=realloc(a,sizeof(int));
+        printf("\nEnter Value: ");
+        scanf("%d",*(a+(++top)));
     }
     display_stack();
+}
+void pop_stack()
+{
+    
 }
 void main()
 {
@@ -53,8 +42,6 @@ void main()
     int a[100];
     char ch;
     system("cls");
-    printf("\n Enter the limit of the stack:");
-    scanf("%d",&n);
     start:
     printf("\nPress 1 to PUSH\nPress 2 for POP\nPress 3 for Displaying the Stack\nPress 4 for exit the process.");
     printf("\n-->>");
