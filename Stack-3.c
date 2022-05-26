@@ -1,12 +1,14 @@
-/* Unlimited Array */
+/* Push and pop operations of stack. Array Size extension using */
 #include<stdio.h>
 #include<stdlib.h>
 #include<conio.h>
 void display_stack();
-void push_stack(int n);
+void push_stack();
 void pop_stack();
 int top=-1;
-int a[];
+int a[100];
+int n;
+int counter=1;
 void display_stack()
 {
     int i;
@@ -16,9 +18,14 @@ void display_stack()
     }
     printf("\n This was output of your chosen opeartion :) .");
 }
-void push_stack(int n)
+void push_stack()
 {
    int value;
+   if(top>=n-1)
+   {
+       counter++;
+       realloc(a,counter*n*sizeof(int));
+   }
     top=top+1;
     printf("\n Enter the value to push: ");
     scanf("%d",&value);
@@ -43,7 +50,7 @@ void pop_stack()
 void main()
 {
     int choice;
-    int n,a[100];
+    int a[100];
     char ch;
     system("cls");
     printf("\n Enter the limit of the stack:");
@@ -54,7 +61,7 @@ void main()
     scanf("%d",&choice);
 switch(choice)
 {
-    case 1: push_stack(n);
+    case 1: push_stack();
             break;
     case 2: pop_stack();
             break;
