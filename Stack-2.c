@@ -6,7 +6,7 @@ void display_stack();
 void push_stack(int n);
 void pop_stack();
 int top=-1;
-int a[]={0};
+int a[];
 void display_stack()
 {
     int i;
@@ -46,8 +46,6 @@ void main()
     int n,a[100];
     char ch;
     system("cls");
-    printf("\n Enter the limit of the stack:");
-    scanf("%d",&n);
     start:
     printf("\nPress 1 to PUSH\nPress 2 for POP\nPress 3 for Displaying the Stack\nPress 4 for exit the process.");
     printf("\n-->>");
