@@ -43,7 +43,6 @@ void pop_stack()
 void main()
 {
     int choice;
-    int n,a[100];
     char ch;
     system("cls");
     start:
