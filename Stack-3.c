@@ -1,4 +1,4 @@
-/* Push and pop operations of stack. Array Size extension using */
+/* Push and pop operations of stack. Array Size extension using realloc*/
 #include<stdio.h>
 #include<stdlib.h>
 #include<conio.h>
