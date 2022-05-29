@@ -106,7 +106,7 @@ void main()
 {
     int key;
     char ch;
-    node*ptr;
+    node*ptr; 
     node *h[1000]={NULL};
     printf("\nEnter the length of Hash Table:");
     scanf("%d",&n);
