@@ -1,65 +1,31 @@
-/*Implementation of Tree*/
+/*Implementation of Binary Tree*/
 #include<stdio.h>
-#include<conio.h>
 #include<stdlib.h>
+#include<conio.h>
 #include<string.h>
-#include<ctype.h>
-struct node 
-{
+struct node {
     int info;
     struct node *left;
     struct node *right;
-};typedef struct node tnode;
-void insertion_leafnode();
-tnode *create_node();
-void add_node();
-void preorder_traversal(tnode *root);
-tnode *root = NULL;
-int insert,insert_2;
-tnode *create_node()
+};typedef struct node tn;
+tn*root=NULL;
+int level=0;
+tn *create_node()
 {
-    tnode *p;
-    p =(tnode *)malloc(sizeof(tnode));
-    printf("\n Enter Info: ");
-    scanf("%d",&p->info);
-    p->left=NULL;
-    p->right=NULL;
-    return p;
+    tn *ptr=(tn *)malloc(sizeof(tn));
+    printf("\nEnter info:");
+    scanf("%d",&ptr->info);
+    ptr->left=NULL;
+    ptr->right=NULL;
+    return ptr;
 }
-void preorder_traversal(tnode *root)
+void insert_node(tn*root)
 {
-    tnode*ptr = root;
-    if(ptr!=NULL)
-    {
-        printf("%d  ",ptr->info);
-        preorder_traversal(ptr->left);
-        preorder_traversal(ptr->right);
-    }
-}
-void preorder_insertion(tnode *root)
-{
-    tnode*ptr = root;
-    if(ptr==NULL)
-    {
-        ptr=create_node();
-        preorder_traversal(ptr->left);
-        preorder_traversal(ptr->right);
-    }
-}
-void insertion_leafnode()
-{
-    tnode *ptr=root;
-    int ch;
-    char c;
     if(root==NULL)
     {
-        root=create_node(root);
-        preorder_traversal(root);
+        root=create_node();
     }
-    preorder_traversal(root);
 }
 void main()
 {
-    insertion_leafnode();
-    insertion_leafnode();
 }
