@@ -36,9 +36,27 @@ void preorder_traversal(tnode *root)
         preorder_traversal(ptr->right);
     }
 }
+void preorder_insertion(tnode *root)
+{
+    tnode*ptr = root;
+    if(ptr==NULL)
+    {
+        ptr=create_node();
+        preorder_traversal(ptr->left);
+        preorder_traversal(ptr->right);
+    }
+}
 void insertion_leafnode()
 {
-    
+    tnode *ptr=root;
+    int ch;
+    char c;
+    if(root==NULL)
+    {
+        root=create_node(root);
+        preorder_traversal(root);
+    }
+    preorder_traversal(root);
 }
 void main()
 {
