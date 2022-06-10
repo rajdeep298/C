@@ -97,7 +97,7 @@ node *delete_last_node(node *head) {
     node *temp;
     node *prev;
     if(head == NULL) {
-        printf("\nEmpty List.\n");
+        printf("\nLinked List Underflow.\n");
     } else {
         temp = head;
         while(temp->next != NULL) {

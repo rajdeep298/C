@@ -47,7 +47,7 @@ pn *create(pn *head) {
 }
 void print(pn *head) {
     if (head == NULL) {
-        printf("\nNo polynomial found.");
+        printf("\nNo polynomial found. ");
     }
     else {
         pn *temp = head;

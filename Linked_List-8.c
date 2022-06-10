@@ -39,7 +39,7 @@ void forward_traversal_of_the_linked_list()//for forward traversal in the linked
     Dnode*q;
     if(start==NULL)
     {
-        printf("\n No element in the linked list.\n");
+        printf("\n Linked List Underflow.\n");
     }
     else
     {
