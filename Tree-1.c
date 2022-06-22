@@ -1,4 +1,4 @@
-/*Creating a binary tree(caution:no duplicate node is not allowed)*/
+/*Creating a binary tree and Basic Operations(caution:no duplicate node is not allowed)*/
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
@@ -17,6 +17,10 @@ tnode *create_tnode();
 void check_and_insert(tnode *ptr);
 void create_tree();
 tnode *preorder_traversal(tnode *root);
+tnode *postorder_traversal(tnode *root);
+tnode *postorder_traversal(tnode *root)
+{
+}
 tnode *create_tnode()
 {
     tnode *p;
@@ -37,14 +41,14 @@ tnode *preorder_search_traversal(tnode *root)
         preorder_search_traversal(ptr->right);
     }
 }
-tnode *preorder_traversal(tnode *root)
+tnode *preorder_traversal(tnode *main_root)
 {
-    tnode *ptr=root;
+    tnode *ptr=main_root;
     if(ptr!=NULL)
     {
         printf("%d\t",ptr->info);
-        preorder_search_traversal(ptr->left);
-        preorder_search_traversal(ptr->right);
+        preorder_traversal(ptr->left);
+        preorder_traversal(ptr->right);
     }
 }
 void check_and_insert(tnode *ptr)
@@ -74,14 +78,12 @@ void create_tree()
     {
         root=create_tnode();
         main_root=root;
-        preorder_traversal(root);
     }
     else
     {
         printf("\nInsert the info of the node after which you want to insert:");
         scanf("%d",&key);
-        preorder_search_traversal(root);
-        preorder_traversal(root);
+        preorder_search_traversal(main_root);
     }
 }
 void main() 
@@ -90,6 +92,7 @@ void main()
     printf("\n*Creating a binary tree(caution:no duplicate node is not allowed)*\n\n");
     start:
     create_tree();
+    preorder_traversal(main_root);
     printf("\nIf you want to continue then press Y or y.");
     printf("\n-->>");
     ch=getch();
