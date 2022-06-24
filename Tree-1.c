@@ -148,11 +148,14 @@ void main()
                scanf("%d",&i);
                switch(i)
                {
-                case 1:preorder_traversal(main_root);
+                case 1:printf("\nPreorder Traversal-->>");
+                       preorder_traversal(main_root);
                        break;
-                case 2:inorder_traversal(main_root);
+                case 2:printf("\nInorder Traversal");
+                       inorder_traversal(main_root);
                        break;
-                case 3:postorder_traversal(main_root);
+                case 3:printf("\nPostorder Traversal");
+                       postorder_traversal(main_root);
                        break;
                }
                printf("\nIf you want to continue then press Y or y.");
@@ -239,6 +242,7 @@ Press 1 for Preorder_Traversal,
 Press 2 for Inorder_Traversal,
 Press 3 for Postorder_Traversal
 -->>1
+Preorder Traversal-->>
 1       2       4       5       3       6
 If you want to continue then press Y or y.
 -->>
@@ -246,6 +250,7 @@ Press 1 for Preorder_Traversal,
 Press 2 for Inorder_Traversal,
 Press 3 for Postorder_Traversal
 -->>2
+Inorder Traversal-->>
 4 2 5 1 3 6 
 If you want to continue then press Y or y.
 -->>
@@ -253,6 +258,7 @@ Press 1 for Preorder_Traversal,
 Press 2 for Inorder_Traversal,
 Press 3 for Postorder_Traversal
 -->>3
+Postorder Traversal-->>
 4 5 2 6 3 1 
 If you want to continue then press Y or y.
 -->>
