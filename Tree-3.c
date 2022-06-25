@@ -116,7 +116,8 @@ void main()
         goto start;
     }
 }
-/*PS D:\Programming\C> gcc Tree-3.c
+/*
+PS D:\Programming\C> gcc Tree-3.c
 PS D:\Programming\C> .\a.exe
 
 Enter the number you want to insert in the Binary Search Tree:50
