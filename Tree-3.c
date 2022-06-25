@@ -18,7 +18,7 @@ tnode *inorder_traversal(tnode*root)
     if(ptr!=NULL)
     {
         inorder_traversal(ptr->left);
-        printf("%d ",ptr->info);
+        printf("%d\t",ptr->info);
         inorder_traversal(ptr->right);
     }
 }
@@ -29,7 +29,7 @@ tnode *postorder_traversal(tnode *root)
     {
         postorder_traversal(ptr->left);
         postorder_traversal(ptr->right);
-        printf("%d ",ptr->info);
+        printf("%d\t",ptr->info);
     }
 }
 tnode *preorder_traversal(tnode *root)
@@ -62,32 +62,35 @@ void binary_search_tree_insertion(int key)
             ptr1=ptr;
             ptr=ptr->left;
         }
-        if(ptr->info<key)
+        else if(ptr->info<key)
         {
             ptr1=ptr;
             ptr=ptr->right;
         }
-        if(ptr->info==key)
+        else if(ptr->info==key)
         {
             printf("\nThis element already exists in the tree\nDuplicate Insertion Attempt");
             flag=1;
             exit(0);
         }
     }
-    if(root==NULL)
+    if(ptr==NULL)
     {
-        root=create_tnode(key);
-    }
-    else if(ptr==NULL)
-    {
-        new=create_tnode(key);
-        if(ptr->info>key)
+        if(root==NULL)
         {
-            ptr1->right=new;
+            root=create_tnode(key);
         }
         else
         {
-            ptr1->left=new;
+            new=create_tnode(key);
+            if(ptr1->info<key)
+            {
+                ptr1->right=new;
+            }
+            else
+            {
+                ptr1->left=new;
+            }
         }
     }    
 }
@@ -105,7 +108,7 @@ void main()
     inorder_traversal(root);
     printf("\nPostorder Traversal-->>\n");
     postorder_traversal(root);
-    printf("\n If you want to continue press y or Y");
+    printf("\nIf you want to continue press y or Y");
     printf("\n-->>");
     ch=getch();
     if(ch=='y' || ch=='Y')
@@ -113,3 +116,76 @@ void main()
         goto start;
     }
 }
+/*PS D:\Programming\C> gcc Tree-3.c
+PS D:\Programming\C> .\a.exe
+
+Enter the number you want to insert in the Binary Search Tree:50
+
+Preorder Traversal-->>
+50
+Inorder Traversal-->>
+50
+Postorder Traversal-->>
+50
+If you want to continue press y or Y
+-->>
+Enter the number you want to insert in the Binary Search Tree:25
+
+Preorder Traversal-->>
+50      25
+Inorder Traversal-->>
+25      50
+Postorder Traversal-->>
+25      50
+If you want to continue press y or Y
+-->>
+Enter the number you want to insert in the Binary Search Tree:75
+
+Preorder Traversal-->>
+50      25      75
+Inorder Traversal-->>
+25      50      75
+Postorder Traversal-->>
+25      75      50
+If you want to continue press y or Y
+-->>
+Enter the number you want to insert in the Binary Search Tree:10
+
+Preorder Traversal-->>
+50      25      10      75
+Inorder Traversal-->>
+10      25      50      75
+Postorder Traversal-->>
+10      25      75      50
+If you want to continue press y or Y
+-->>
+Enter the number you want to insert in the Binary Search Tree:15
+
+Preorder Traversal-->>
+50      25      10      15      75
+Inorder Traversal-->>
+10      15      25      50      75
+Postorder Traversal-->>
+15      10      25      75      50
+If you want to continue press y or Y
+-->>
+Enter the number you want to insert in the Binary Search Tree:95
+
+Preorder Traversal-->>
+50      25      10      15      75      95
+Inorder Traversal-->>
+10      15      25      50      75      95
+Postorder Traversal-->>
+15      10      25      95      75      50
+If you want to continue press y or Y
+-->>
+Enter the number you want to insert in the Binary Search Tree:65
+
+Preorder Traversal-->>
+50      25      10      15      75      65      95
+Inorder Traversal-->>
+10      15      25      50      65      75      95
+Postorder Traversal-->>
+15      10      25      65      95      75      50
+If you want to continue press y or Y
+-->>*/
