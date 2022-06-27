@@ -67,3 +67,27 @@ void main()
     Quick_Sort(0,r-1);
     display(r);
 }
+/* ********************************OUTPUT********************************
+Enter the number of elements in the array:5
+
+ Enter the elements of the array-0:15
+
+ Enter the elements of the array-1:12
+
+ Enter the elements of the array-2:5
+
+ Enter the elements of the array-3:45
+
+ Enter the elements of the array-4:32
+
+ Array[0]:15
+ Array[1]:12
+ Array[2]:5
+ Array[3]:45
+ Array[4]:32
+Sorted Array: 
+ Array[0]:5
+ Array[1]:12
+ Array[2]:15
+ Array[3]:32
+ Array[4]:45*/

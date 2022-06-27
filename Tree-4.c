@@ -176,3 +176,56 @@ void main()
         goto then;
     }
 }
+/* ************************************OUTPUT************************************
+*Creating a binary tree(caution:no duplicate node is not allowed)*
+
+
+Enter info:1
+1
+If you want to continue then press Y or y.
+-->>
+Insert the info of the node after which you want to insert:1
+
+ If you want to insert left child then press Y or y.
+-->>
+Enter info:2
+1       2
+ If you want to insert right child then press Y or y.
+-->>
+Enter info:3
+1       2       3
+If you want to continue then press Y or y.
+-->>
+Insert the info of the node after which you want to insert:2
+
+ If you want to insert left child then press Y or y.
+-->>
+Enter info:4
+1       2       4       3
+ If you want to insert right child then press Y or y.
+-->>
+If you want to continue then press Y or y.
+-->>
+Insert the info of the node after which you want to insert:3
+
+ If you want to insert left child then press Y or y.
+-->>
+ If you want to insert right child then press Y or y.
+-->>
+Enter info:5
+1       2       4       3       5
+If you want to continue then press Y or y.
+-->>
+Enter the node you want to delete: 4
+
+Node deleted-4
+1       2       3       5
+If you want to continue then press Y or y.
+-->>
+Enter the node you want to delete: 3
+
+We cannot delete this node as it is not a leave node
+
+1       2       3       5
+If you want to continue then press Y or y.
+-->>*/
