@@ -17,9 +17,10 @@ tnode *create_tnode();
 void preorder_delete_leaf_node_traversal(tnode *root);
 int check_parent_and_delete_child(tnode *ptr);
 int check_parent_and_delete_child(tnode *ptr)
-{
-    if(ptr->left->info==key)
+{   if(ptr->left != NULL)
     {
+        if(ptr->left->info==key)
+       {
         if(ptr->left->left==NULL && ptr->left->right==NULL)
         {
             ptr->left=NULL;
@@ -32,9 +33,12 @@ int check_parent_and_delete_child(tnode *ptr)
             return 0;
             exit(0);
         }
+        }
     }
-    else if(ptr->right->info==key)
+    if(ptr->right!=NULL)
     {
+        if(ptr->right->info==key)
+        {
         if(ptr->right->left==NULL && ptr->right->right==NULL)
         {
             ptr->right=NULL;
@@ -47,31 +51,27 @@ int check_parent_and_delete_child(tnode *ptr)
             return 0;
             exit(0);
         }
+        }
     }
     else
-    {
+    { 
         return 0;
     }
 }
 void preorder_delete_leaf_node_traversal(tnode *root)
 {
     tnode *ptr=root;
-    int p;
+    int p=0;
     if(ptr!=NULL)
     {
         p=check_parent_and_delete_child(ptr);
         if(p==1)
         {
-            goto go;
+            printf("\nNode deleted-%d",key);
         }
-        preorder_search_traversal(ptr->left);
-        preorder_search_traversal(ptr->right);
+        preorder_delete_leaf_node_traversal(ptr->left);
+        preorder_delete_leaf_node_traversal(ptr->right);
     }
-    if(p==0)
-    {
-        printf("\n No such node found or if found then the node is not leave node\n");
-    }
-    go:
 }
 tnode *create_tnode()
 {
@@ -157,6 +157,7 @@ void main()
     printf("\nIf you want to continue then press Y or y.");
     printf("\n-->>");
     ch=getch();
+
     if(ch=='y'|| ch=='Y')
     {
         goto start;
@@ -165,6 +166,7 @@ void main()
     printf("\nEnter the node you want to delete: ");
     scanf("%d",&key);
     preorder_delete_leaf_node_traversal(root);
+    printf("\n");
     preorder_traversal(root);
     printf("\nIf you want to continue then press Y or y.");
     printf("\n-->>");
