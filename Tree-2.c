@@ -43,7 +43,7 @@ void inorder_treaversal_nonrecursive()
     ptr=pop();
     while(ptr != NULL)
     {
-        printf("%d",ptr->info);
+        printf("%d\t",ptr->info);
         if(ptr->right != NULL)
         {
             ptr=ptr->right;
@@ -69,7 +69,7 @@ void preorder_traversal_nonrecursive()
     tnode*ptr=root;
     while(ptr!=NULL)
     {
-        printf("%d",ptr->info);
+        printf("%d\t",ptr->info);
         if(ptr->right!=NULL)
         {
             push(ptr->right);
@@ -140,7 +140,7 @@ void create_tree()
     {
         root=create_tnode();
         main_root=root;
-        preorder_traversal(main_root);
+        preorder_traversal_nonrecursive(main_root);
     }
     else
     {
