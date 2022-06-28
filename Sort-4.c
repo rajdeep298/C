@@ -5,36 +5,47 @@
 #include<stdbool.h>
 int a[1000]={0};
 int b[1000]={0};
-int create_heap(int n);
-int rebuild_heap(int n);
+void create_heap(int n);
+void rebuild_heap(int n);
 void insert(int n);
-int remove_max(int n);
-void display(int n);
-void display(int n)
+void remove_max(int n);
+void display(int *arr,int n,int l);
+void Heap_Sort(int n);
+void display(int *arr,int n,int l)
 {
     int i;
-    for(i=0;i<n;i++)
+    for(i=l;i<=n;i++)
     {
-        printf("\n Array[%d]:%d",i,a[i]);
+        printf("\n Array[%d]:%d",i,arr[i]);
     }
 }
 void insert(int n)
 {
     int i;
-    for(i=0;i<n;i++)
+    for(i=1;i<=n;i++)
     {
       printf("\n Enter the elements of the array-%d:",i);
       scanf("%d",&a[i]);
     }
-}
-int remove_max(int n)
+} 
+void Heap_Sort(int n) 
 {
-    return(n-1);
+    create_heap(n);
+    int i;
+    for(i=n;i>=2;i--)
+    {
+        remove_max(i);
+        rebuild_heap(i-1);
+    }
 }
-int create_heap(int n)
+void remove_max(int n)
+{
+    b[1]=b[n]+b[1]-(b[n]=b[1]);
+}
+void create_heap(int n)
 {
     int i=1,j,k,l;
-    while(i<n)
+    while(i<=n)
     {
         int x=a[i];
         b[i]=x;
@@ -54,12 +65,13 @@ int create_heap(int n)
         i++;
     }
 }
-int rebuild_heap(int n)
+void rebuild_heap(int n)
 {
     int i,j,k,l,lc,rc;
     bool flag;
     if(n==1) 
     {
+        display(b,n,1);
         exit(0);
     }
     else
@@ -98,7 +110,10 @@ int rebuild_heap(int n)
                 {
                     flag=false;
                 }
-                
+            }
+            else
+            {
+                flag=false;
             }
         }
     }
@@ -109,10 +124,7 @@ void main()
     printf("\nEnter the number of elememts in the array:");
     scanf("%d",&n);
     insert(n);
-    display(n);
-    create_heap(n);
-    n=remove_max(n);
-    rebuild_heap(n);
+    display(a,n,1);
     printf("\nSorted Array:");
-    display(n);
+    Heap_Sort(n);
 }
