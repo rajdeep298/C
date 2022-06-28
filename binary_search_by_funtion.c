@@ -7,21 +7,20 @@ int iterativeBinarySearch(int *a, int ini, int fin, int key)
     int mid;
    while (ini <= fin)
    {
-       mid = ini + (fin- ini )/2;
+      mid = ini + (fin- ini )/2;
       if (a[mid] == key)
       {
-          return mid;
-          exit (0);
+        return mid;
+        exit (0);
       }   
       else if (a[mid] < key)
       {
-          ini = mid + 1;
+        ini = mid + 1;
       }   
       else
       {
         fin = mid - 1;
-      }
-         
+      }    
    }
    return -1;
 }
