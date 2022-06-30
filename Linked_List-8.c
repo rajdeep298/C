@@ -19,8 +19,74 @@ void insert_after_a_node( int key );
 void insert_before_a_node(int key );
 void delete_first_node();
 void delete_last_node();
+void search();
 void forward_traversal_of_the_linked_list();
 void backward_traversal_of_the_linked_list();
+void insert_at_kth_position();
+void delete_from_kth_pos();
+void delete_from_kth_pos()
+{
+    int k,flag;
+    Dnode *p,*q=start;
+    printf("\nEnter the -th position you want to insert: ");
+    scanf("%d",&k);
+        while(k!=0)
+    {
+        if(start==NULL)
+        {
+            printf("\n No position");
+        }
+        else
+        { 
+            q=q->next;
+        }
+        k--;
+    }
+    q=q->prev;
+    if(q!=NULL)
+    {
+        p=q->prev;
+        p->next=q->next;
+        (q->next)->prev=p;
+        free(q);
+    }
+    else
+    {
+        printf("\nNo such position");
+    }
+}
+void insert_at_kth_position()
+{
+    int k,flag;
+    Dnode *p,*q=start;
+    printf("\nEnter the -th position you want to insert: ");
+    scanf("%d",&k);
+    p=create_node();
+    while(k!=0)
+    {
+        if(start==NULL)
+        {
+            printf("\n No position");
+        }
+        else
+        { 
+            q=q->next;
+        }
+        k--;
+    }
+    q=q->prev;
+    if(q!=NULL)
+    {
+        p->next=q;
+        (q->prev)->next=p;
+        p->prev=q->prev;
+        q->prev=p;
+    }
+    else
+    {
+        printf("\nNo such position");
+    }
+}
 void backward_traversal_of_the_linked_list()// for backward traversal in the linked list
 {
     Dnode*p,*q,*r;
@@ -52,6 +118,41 @@ Dnode* Reverse(Dnode* start)
         
     return Reverse(node->prev);
 }
+void search()  
+{  
+    struct node *ptr;  
+    int item,i=0,flag;  
+    ptr = start;   
+    if(ptr == NULL)  
+    {  
+        printf("\nEmpty List\n");  
+    }  
+    else  
+    {   
+        printf("\nEnter item which you want to search?\n");   
+        scanf("%d",&item);  
+        while (ptr!=NULL)  
+        {  
+            if(ptr->info == item)  
+            {  
+                printf("\nitem found at location %d ",i+1);  
+                flag=0;  
+                break;  
+            }   
+            else  
+            {  
+                flag=1;  
+            }  
+            i++;  
+            ptr = ptr -> next;  
+        }  
+        if(flag==1)  
+        {  
+            printf("\nItem not found\n");  
+        }  
+    }     
+          
+}  
 void create_DLL()
 {
     int num;
@@ -264,13 +365,13 @@ void main()
     create_DLL();
     start:
     display();
-printf("\nPress 1 for Insertion,\nPress 2 for for Deletion,\nPress 3 for Traversal,\nPress 4 for Display,\nPress 5 for Exiting the process");
+printf("\nPress 1 for Insertion,\nPress 2 for for Deletion,\nPress 3 for Traversal,\nPress 4 for Display,\nPress 5 for Search,\nPress 6 to exit");
 printf("\n Enter choice:");
 scanf("%d",&option);
 switch(option)
 {
     case 1: printf("\n Insertion of nodes-->>");
-            printf("\n Press 1 for Insert at the beginning of the list,\nPress 2 for Insert at the end of the list,\nPress 3 for enter after a specific node,\nPress 4 for enter before a specific node,\nPress 5 to exit");
+            printf("\n Press 1 for Insert at the beginning of the list,\nPress 2 for Insert at the end of the list,\nPress 3 for enter after a specific node,\nPress 4 for enter before a specific node,\nPress 5 insert at k-th position,\nPress 6 to exit");
             printf("\n Enter choice:");
             scanf("%d",&option2);
             switch(option2)
@@ -291,11 +392,16 @@ switch(option)
                        scanf("%d",&key);
                        insert_before_a_node(key);
                        break;
+                case 5:printf("\nInserting at k-th position");
+                       insert_at_kth_position();
+                       display();
+                       break;
+                case 6:break;
                 default: printf("\n Enter the correct choice. :(");            
             }
             break;
     case 2: printf("\n Deletion of nodes-->>");
-            printf("\n Press 1 for Deleting the first node of the list,\nPress 2 for Deleting the last node of the list,\nPress 3 for Deleting after a specific node,\nPress 4 to exit");
+            printf("\n Press 1 for Deleting the first node of the list,\nPress 2 for Deleting the last node of the list,\nPress 3 for Deleting after a specific node,\nPress 4 to delete from k-th position,\nPress 5 to exit");
             printf("\n Enter choice:");            
             scanf("%d",&option2);
             switch(option2)
@@ -312,7 +418,10 @@ switch(option)
                         printf("\n  The linked list:");
                         delete_node(del);
                         break;
-                case 4:break;
+                case 4:delete_from_kth_pos();
+                       display();
+                       break;
+                case 5:break;
                 default: printf("\n Enter the correct choice");   
             }
             break; 
@@ -349,8 +458,11 @@ switch(option)
     case 4:printf("\n Display the list");
            display();
            break;
-    case 5:exit(0);
+    case 5:printf("\nSearching for a node...");
+           search();
            break;
+    case 6:exit(0);
+           break;       
     default: printf("\n Enter the correct choice"); 
             break;                      
 }
@@ -413,7 +525,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:1
 
  Insertion of nodes-->>
@@ -421,7 +534,8 @@ Press 5 for Exiting the process
 Press 2 for Insert at the end of the list,
 Press 3 for enter after a specific node,
 Press 4 for enter before a specific node,
-Press 5 to exit
+Press 5 insert at k-th position,
+Press 6 to exit
  Enter choice:1
 
  Enter a node at the beginning of the list
@@ -450,7 +564,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:1
 
  Insertion of nodes-->>
@@ -458,7 +573,8 @@ Press 5 for Exiting the process
 Press 2 for Insert at the end of the list,
 Press 3 for enter after a specific node,
 Press 4 for enter before a specific node,
-Press 5 to exit
+Press 5 insert at k-th position,
+Press 6 to exit
  Enter choice:2
 
  Enter a node to the last of the list
@@ -489,7 +605,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:1
 
  Insertion of nodes-->>
@@ -497,7 +614,8 @@ Press 5 for Exiting the process
 Press 2 for Insert at the end of the list,
 Press 3 for enter after a specific node,
 Press 4 for enter before a specific node,
-Press 5 to exit
+Press 5 insert at k-th position,
+Press 6 to exit
  Enter choice:3
 
  Insert after a specific node
@@ -532,15 +650,18 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:1
 
+ Insertion of nodes-->>
  Insertion of nodes-->>
  Press 1 for Insert at the beginning of the list,
 Press 2 for Insert at the end of the list,
 Press 3 for enter after a specific node,
 Press 4 for enter before a specific node,
-Press 5 to exit
+Press 5 insert at k-th position,
+Press 6 to exit
  Enter choice:4
 
  Insert before a specific node
@@ -572,19 +693,56 @@ Press-->>
 [Adddress_of_previous_node-33ff1450|Info->56|Address_of_next_node->(33ff1470)]-->>](address of this node->(33ff14f0))---->>>>
 [Adddress_of_previous_node-33ff14f0|Info->5|Address_of_next_node->(33ff14b0)]-->>](address of this node->(33ff1470))---->>>>
 [Adddress_of_previous_node-33ff1470|Info->23|Address_of_next_node->(0)]-->>](address of this node->(33ff14b0))---->>>>
-
+Do you want you repeat the process
+Then press Y or y.
+Press-->>
 Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
+ Enter choice:1
+
+ Insertion of nodes-->>
+ Press 1 for Insert at the beginning of the list,
+Press 2 for Insert at the end of the list,
+Press 3 for enter after a specific node,
+Press 4 for enter before a specific node,
+Press 5 insert at k-th position,
+Press 6 to exit
+ Enter choice:5
+
+Inserting at k-th position
+Enter the -th position you want to insert: 3
+
+ Enter the info:45
+
+ The element into the list:
+[Adddress_of_previous_node-0|Info->1|Address_of_next_node->(756cb0)]-->>](address of this node->(756c90))---->>>>
+[Adddress_of_previous_node-756c90|Info->2|Address_of_next_node->(756d30)]-->>](address of this node->(756cb0))---->>>>
+[Adddress_of_previous_node-756cb0|Info->45|Address_of_next_node->(756cd0)]-->>](address of this node->(756d30))---->>>>
+[Adddress_of_previous_node-756d30|Info->3|Address_of_next_node->(756cf0)]-->>](address of this node->(756cd0))---->>>>
+[Adddress_of_previous_node-756cd0|Info->4|Address_of_next_node->(756d10)]-->>](address of this node->(756cf0))---->>>>
+[Adddress_of_previous_node-756cf0|Info->5|Address_of_next_node->(0)]-->>](address of this node->(756d10))---->>>>
+
+Do you want you repeat the process
+Then press Y or y.
+Press-->>
+Press 1 for Insertion,
+Press 2 for for Deletion,
+Press 3 for Traversal,
+Press 4 for Display,
+Press 5 for Search,
+Press 6 to exit
  Enter choice:2
 
  Deletion of nodes-->>
  Press 1 for Deleting the first node of the list,
 Press 2 for Deleting the last node of the list,
 Press 3 for Deleting after a specific node,
-Press 4 to exit
+Press 4 to delete from k-th position,
+Press 5 to exit
  Enter choice:1
 
  Delete the first node in the list
@@ -610,20 +768,48 @@ Press-->>
 [Adddress_of_previous_node-33ff1450|Info->56|Address_of_next_node->(33ff1470)]-->>](address of this node->(33ff14f0))---->>>>
 [Adddress_of_previous_node-33ff14f0|Info->5|Address_of_next_node->(33ff14b0)]-->>](address of this node->(33ff1470))---->>>>
 [Adddress_of_previous_node-33ff1470|Info->23|Address_of_next_node->(0)]-->>](address of this node->(33ff14b0))---->>>>
-
 Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
+ Enter choice:2
+
+ Deletion of nodes-->>
+ Press 1 for Deleting the first node of the list,
+Press 2 for Deleting the last node of the list,
+Press 3 for Deleting after a specific node,
+Press 4 to delete from k-th position,
+Press 5 to exit
+ Enter choice:4
+
+Enter the -th position you want to insert: 3
+
+ The element into the list:
+[Adddress_of_previous_node-0|Info->1|Address_of_next_node->(765f1410)]-->>](address of this node->(765f13f0))---->>>>      
+[Adddress_of_previous_node-765f13f0|Info->2|Address_of_next_node->(765f1450)]-->>](address of this node->(765f1410))---->>>>
+[Adddress_of_previous_node-765f1410|Info->4|Address_of_next_node->(765f1470)]-->>](address of this node->(765f1450))---->>>>
+[Adddress_of_previous_node-765f1450|Info->5|Address_of_next_node->(0)]-->>](address of this node->(765f1470))---->>>>      
+
+Do you want you repeat the process
+Then press Y or y.
+Press-->>
+Press 1 for Insertion,
+Press 2 for for Deletion,
+Press 3 for Traversal,
+Press 4 for Display,
+Press 5 for Search,
+Press 6 to exit
  Enter choice:1
 
  Insertion of nodes-->>
- Press 1 for Insert at the beginning of the list,
-Press 2 for Insert at the end of the list,
-Press 3 for enter after a specific node,
-Press 4 for enter before a specific node,
-Press 5 to exit
+Press 1 for Insertion,
+Press 2 for for Deletion,
+Press 3 for Traversal,
+Press 4 for Display,
+Press 5 for Search,
+Press 6 to exit
  Enter choice:5
 
  Enter the correct choice. :(
@@ -644,7 +830,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:2
 
  Deletion of nodes-->>
@@ -680,7 +867,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:2
 
  Deletion of nodes-->>
@@ -714,7 +902,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:2
 
  Deletion of nodes-->>
@@ -749,7 +938,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:3
 
  Traversal in Linked List-->>
@@ -780,7 +970,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:3
 
  Traversal in Linked List-->>
@@ -792,7 +983,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:3
 
  Traversal in Linked List-->>
@@ -819,7 +1011,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:3
 
  Traversal in Linked List-->>
@@ -848,7 +1041,8 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:4
 
  Display the list
@@ -873,5 +1067,6 @@ Press 1 for Insertion,
 Press 2 for for Deletion,
 Press 3 for Traversal,
 Press 4 for Display,
-Press 5 for Exiting the process
+Press 5 for Search,
+Press 6 to exit
  Enter choice:5*/
