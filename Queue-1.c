@@ -21,7 +21,7 @@ void queue_insertion(int *a, int max)
        rear++;
        a[rear]=value;
    }
-   queue_display(a);
+   queue_display(front,a);
 }
 void queue_deletion(int *a, int max)
 {
@@ -41,9 +41,9 @@ void queue_deletion(int *a, int max)
         front=-1;
         rear=-1;
     }
-    queue_display(a);
+    queue_display(front+1,a);
 }
-void queue_display(int *a)
+void queue_display(int front,int *a)
 {
     int i;
     for(i=((front>=0) ? front :0);i<=rear;i++)
@@ -71,7 +71,7 @@ void main()
                 queue_deletion(a,max);
                 break;
         case 3:printf("\nDisplay-->>");
-                queue_display(a);
+                queue_display(front,a);
                 break;
         case 4:printf("\nExiting the Programme .......");
                exit(0);
@@ -88,3 +88,121 @@ void main()
     printf("\n********************End of the process********************");
     printf("\n:)");
 }
+/*
+
+ Enter the limit of the queue: 5
+
+Press
+1.For Insertion,
+2 for Deletion,
+3 for Display,
+4 for Exiting the Programme
+Enter the choice:1
+
+Insertion-->>
+Enter the Number to insert in the Queue:1
+
+Element-0:1
+This was output of your chosen opeartion :) .
+ If you want to continue, press Y or y
+-->>
+Press
+1.For Insertion,
+2 for Deletion,
+3 for Display,
+4 for Exiting the Programme
+Enter the choice:1
+
+Insertion-->>
+Enter the Number to insert in the Queue:2
+
+Element-0:1
+Element-1:2
+This was output of your chosen opeartion :) .
+ If you want to continue, press Y or y
+-->>
+Press
+1.For Insertion,
+2 for Deletion,
+3 for Display,
+4 for Exiting the Programme
+Enter the choice:1
+
+Insertion-->>
+Enter the Number to insert in the Queue:3
+
+Element-0:1
+Element-1:2
+Element-2:3
+This was output of your chosen opeartion :) .
+ If you want to continue, press Y or y
+-->>
+Press
+1.For Insertion,
+2 for Deletion,
+3 for Display,
+4 for Exiting the Programme
+Enter the choice:1
+
+Insertion-->>
+Enter the Number to insert in the Queue:4
+
+Element-0:1
+Element-1:2
+Element-2:3
+Element-3:4
+This was output of your chosen opeartion :) .
+ If you want to continue, press Y or y
+-->>
+Press
+1.For Insertion,
+2 for Deletion,
+3 for Display,
+4 for Exiting the Programme
+Enter the choice:2
+
+Deletion-->>
+The value extracted from the Queue:1
+Element-1:2
+Element-2:3
+Element-3:4
+This was output of your chosen opeartion :) .
+ If you want to continue, press Y or y
+-->>
+Press
+1.For Insertion,
+2 for Deletion,
+3 for Display,
+4 for Exiting the Programme
+Enter the choice:2
+
+Deletion-->>
+The value extracted from the Queue:2
+Element-2:3
+Element-3:4
+This was output of your chosen opeartion :) .
+ If you want to continue, press Y or y
+-->>
+Press
+1.For Insertion,
+2 for Deletion,
+3 for Display,
+4 for Exiting the Programme
+Enter the choice:3
+
+Display-->>
+Element-1:2
+Element-2:3
+Element-3:4
+This was output of your chosen opeartion :) .
+ If you want to continue, press Y or y
+-->>
+Press
+1.For Insertion,
+2 for Deletion,
+3 for Display,
+4 for Exiting the Programme
+Enter the choice:4
+
+Exiting the Programme .......
+*/

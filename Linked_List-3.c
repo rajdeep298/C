@@ -40,7 +40,7 @@ void deletion_in_queue_via_linked_list()
     }
     else
     {
-        front=p;
+        p=front;
         front=front->next;
         printf("\n Value extracted from queue: %d\n", p->info);
         free(p);
@@ -77,7 +77,6 @@ void main()
     start = NULL;
     int choice;
     char ch;
-    system("cls");
     start:
     printf("\nPress 1 for INSERTION,\nPress 2 for DELETION,\nPress 3 for DISPLAY,\nPress 4 for Exit the program");
     printf("\nEnter choice:");
@@ -108,3 +107,68 @@ void main()
     printf("\n ****************************End of the process****************************");
     printf("\n:)");
 }
+/* ******************************OUTPUT******************************
+Press 1 for INSERTION,
+Press 2 for DELETION,
+Press 3 for DISPLAY,
+Press 4 for Exit the program
+Enter choice:1
+
+INSERTION-->>
+Enter info:12
+
+[Info->12|Address_of_next_node->(0)]-->>](address of this node->(af8a13f0))---->>>>
+If you want to repeat the process press Y or y
+-->>
+Press 1 for INSERTION,
+Press 2 for DELETION,
+Press 3 for DISPLAY,
+Press 4 for Exit the program
+Enter choice:1
+
+INSERTION-->>
+Enter info:23
+
+[Info->12|Address_of_next_node->(af8a1410)]-->>](address of this node->(af8a13f0))---->>>>
+[Info->23|Address_of_next_node->(0)]-->>](address of this node->(af8a1410))---->>>>
+If you want to repeat the process press Y or y
+-->>
+Press 1 for INSERTION,
+Press 2 for DELETION,
+Press 3 for DISPLAY,
+Press 4 for Exit the program
+Enter choice:2
+
+DELETION-->>
+ Value extracted from queue: 12
+
+[Info->23|Address_of_next_node->(0)]-->>](address of this node->(af8a1410))---->>>>
+If you want to repeat the process press Y or y
+-->>
+Press 1 for INSERTION,
+Press 2 for DELETION,
+Press 3 for DISPLAY,
+Press 4 for Exit the program
+Enter choice:1
+
+INSERTION-->>
+Enter info:34
+
+[Info->23|Address_of_next_node->(af8a13f0)]-->>](address of this node->(af8a1410))---->>>>
+[Info->34|Address_of_next_node->(0)]-->>](address of this node->(af8a13f0))---->>>>
+If you want to repeat the process press Y or y
+-->>
+Press 1 for INSERTION,
+Press 2 for DELETION,
+Press 3 for DISPLAY,
+Press 4 for Exit the program
+Enter choice:3
+
+DISPLAY-->>
+[Info->23|Address_of_next_node->(af8a13f0)]-->>](address of this node->(af8a1410))---->>>>
+[Info->34|Address_of_next_node->(0)]-->>](address of this node->(af8a13f0))---->>>>
+If you want to repeat the process press Y or y
+-->>
+ ****************************End of the process****************************
+:)
+*/

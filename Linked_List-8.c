@@ -13,6 +13,7 @@ void insert_node_at_last();
 void delete_node(int );
 void display();
 void insert_at_beginning();
+Dnode* Reverse(Dnode* start);
 Dnode*create_node();
 void insert_after_a_node( int key );
 void insert_before_a_node(int key );
@@ -22,16 +23,44 @@ void forward_traversal_of_the_linked_list();
 void backward_traversal_of_the_linked_list();
 void backward_traversal_of_the_linked_list()// for backward traversal in the linked list
 {
-    Dnode *p,*q,*r;
+    Dnode*p,*q,*r;
     p=start;
-    while(p->next!=NULL)
+    q=p->next;
+    p->next=NULL;
+    p->prev=q;
+    while(q!=NULL)
     {
-        p=p->next;
+        q->prev=q->next;
+        q->next=p;
+        p=q;
+        q=q->prev;
     }
-    while(p!=NULL)
+    start=p;
+}    
+Dnode* Reverse(Dnode* start)
+{
+    Dnode*node=start;
+    if (!node)
+        return NULL;
+    Dnode* temp = node->next;
+    node->next = node->prev;
+    node->prev = temp;
+    if (!node->prev)
+        {
+            return node;
+        }
+        
+    return Reverse(node->prev);
+}
+void create_DLL()
+{
+    int num;
+    printf("\n Input Number of nodes:");
+    scanf("%d",&num);
+    while(num)
     {
-        printf("[Adddress_of_previous_node-%x|Info->%d|Address_of_next_node->(%x)]-->>](address of this node->(%x))---->>>>\n",p->prev,p->info,p->next,p);
-        p=p->prev;
+        insert_node_at_last();
+        num--;
     }
 }
 void forward_traversal_of_the_linked_list()//for forward traversal in the linked list
@@ -231,13 +260,8 @@ void main()
     start=NULL;
     int num,del,option,key,option2;
     char ch;
-    printf("\n Input Number of nodes:");
-    scanf("%d",&num);
-    while(num)
-    {
-        insert_node_at_last();
-        num--;
-    }
+    Dnode*new;
+    create_DLL();
     start:
     display();
 printf("\nPress 1 for Insertion,\nPress 2 for for Deletion,\nPress 3 for Traversal,\nPress 4 for Display,\nPress 5 for Exiting the process");
@@ -271,7 +295,7 @@ switch(option)
             }
             break;
     case 2: printf("\n Deletion of nodes-->>");
-                        printf("\n Press 1 for Deleting the first node of the list,\nPress 2 for Deleting the last node of the list,\nPress 3 for Deleting after a specific node,\nPress 4 to exit");
+            printf("\n Press 1 for Deleting the first node of the list,\nPress 2 for Deleting the last node of the list,\nPress 3 for Deleting after a specific node,\nPress 4 to exit");
             printf("\n Enter choice:");            
             scanf("%d",&option2);
             switch(option2)
@@ -293,7 +317,7 @@ switch(option)
             }
             break; 
     case 3: printf("\n Traversal in Linked List-->>");
-            printf("\nPress 1 for forward tarversal of the linked list,\nPress2 for backward tarversal of the linked list");
+            printf("\nPress 1 for forward tarversal of the linked list,\nPress2 for reverse and tarversal of the linked list");
             printf("\n Enter choice:");
             scanf("%d",&option2);
             switch(option2)
@@ -301,8 +325,22 @@ switch(option)
               case 1:printf("\n Forward Traversal:\n");
                     forward_traversal_of_the_linked_list();
                     break;
-              case 2:printf("\n Backward Traversal-->>");
-                     backward_traversal_of_the_linked_list();
+              case 2:printf("\nPress 1 for reverse and tarversal of the linked list in itterative way,\nPress2 for reverse and tarversal of the linked list in recursive way");
+                     printf("\n Enter choice:");
+                     scanf("%d",&option2);
+                     switch(option2)
+                     {
+                        case 1:printf("\n Reverse and tarversal in itterative way-->>");
+                               backward_traversal_of_the_linked_list();
+                               display();
+                               break;
+                        case 2:printf("\n Reverse and tarversal in recursive way-->>");
+                               new=Reverse(start);
+                               start=new;
+                               display();
+                               break;
+                        default: printf("\n Enter the correct choice");       
+                     }
                      break;
               case 3:break;
               default: printf("\n Enter the correct choice"); 
@@ -326,7 +364,8 @@ if(ch=='y' || ch=='Y')
 printf("\n ******************************End of the process******************************");
 printf("\n :) (: ");
 }
-/* Input Number of nodes:5
+/* 
+Input Number of nodes:5
 
  Enter the info:1
 
@@ -749,15 +788,55 @@ Press 1 for forward tarversal of the linked list,
 Press2 for backward tarversal of the linked list
  Enter choice:2
 
- Backward Traversal-->>[Adddress_of_previous_node-33ff1450|Info->5|Address_of_next_node->(0)]-->>](address of this node->(33ff1470))---->>>>
-[Adddress_of_previous_node-33ff1430|Info->4|Address_of_next_node->(33ff1470)]-->>](address of this node->(33ff1450))---->>>>
-[Adddress_of_previous_node-33ff1410|Info->3|Address_of_next_node->(33ff1450)]-->>](address of this node->(33ff1430))---->>>>
-[Adddress_of_previous_node-33ff13f0|Info->2|Address_of_next_node->(33ff1430)]-->>](address of this node->(33ff1410))---->>>>
-[Adddress_of_previous_node-0|Info->1|Address_of_next_node->(33ff1410)]-->>](address of this node->(33ff13f0))---->>>>
+Press 1 for Insertion,
+Press 2 for for Deletion,
+Press 3 for Traversal,
+Press 4 for Display,
+Press 5 for Exiting the process
+ Enter choice:3
+
+ Traversal in Linked List-->>
+Press 1 for forward tarversal of the linked list,
+Press2 for reverse and tarversal of the linked list
+ Enter choice:2
+
+Press 1 for reverse and tarversal of the linked list in itterative way,
+Press2 for reverse and tarversal of the linked list in recursive way
+ Enter choice:1
+
+ Reverse and tarversal in itterative way-->>
+ The element into the list:
+[Adddress_of_previous_node-0|Info->5|Address_of_next_node->(9d6cf0)]-->>](address of this node->(9d6d10))---->>>>
+[Adddress_of_previous_node-9d6d10|Info->4|Address_of_next_node->(9d6cd0)]-->>](address of this node->(9d6cf0))---->>>>
+[Adddress_of_previous_node-9d6cf0|Info->3|Address_of_next_node->(9d6cb0)]-->>](address of this node->(9d6cd0))---->>>>
+[Adddress_of_previous_node-9d6cd0|Info->2|Address_of_next_node->(9d6c90)]-->>](address of this node->(9d6cb0))---->>>>
+[Adddress_of_previous_node-9d6cb0|Info->1|Address_of_next_node->(0)]-->>](address of this node->(9d6c90))---->>>>
 
 Do you want you repeat the process
 Then press Y or y.
 Press-->>
+Press 1 for Insertion,
+Press 2 for for Deletion,
+Press 3 for Traversal,
+Press 4 for Display,
+Press 5 for Exiting the process
+ Enter choice:3
+
+ Traversal in Linked List-->>
+Press 1 for forward tarversal of the linked list,
+Press2 for reverse and tarversal of the linked list
+ Enter choice:2
+
+Press 1 for reverse and tarversal of the linked list in itterative way,
+Press2 for reverse and tarversal of the linked list in recursive way
+ Enter choice:2
+Reverse and tarversal in recursive way-->>
+ The element into the list:
+[Adddress_of_previous_node-0|Info->1|Address_of_next_node->(844dfb20)]-->>](address of this node->(844dfb40))---->>>>
+[Adddress_of_previous_node-844dfb40|Info->2|Address_of_next_node->(844dfb00)]-->>](address of this node->(844dfb20))---->>>>
+[Adddress_of_previous_node-844dfb20|Info->3|Address_of_next_node->(844dfae0)]-->>](address of this node->(844dfb00))---->>>>
+[Adddress_of_previous_node-844dfb00|Info->4|Address_of_next_node->(844dfac0)]-->>](address of this node->(844dfae0))---->>>>
+[Adddress_of_previous_node-844dfae0|Info->5|Address_of_next_node->(0)]-->>](address of this node->(844dfac0))---->>>>
  The element into the list:
 [Adddress_of_previous_node-0|Info->1|Address_of_next_node->(33ff1410)]-->>](address of this node->(33ff13f0))---->>>>
 [Adddress_of_previous_node-33ff13f0|Info->2|Address_of_next_node->(33ff1430)]-->>](address of this node->(33ff1410))---->>>>

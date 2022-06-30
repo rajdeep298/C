@@ -4,7 +4,7 @@
 #include<stdlib.h>
 void circular_queue_insertion();
 void circular_queue_deletion();
-void circular_queue_display_deletion(int *a);
+void circular_queue_display_deletion(int *a,int max);
 void circular_queue_display_insertion(int *a);
 int rear=-1;
 int front=-1;
@@ -48,7 +48,7 @@ void circular_queue_deletion(int *a, int max)
         rear=-1;
     }
     plug=1;
-    circular_queue_display_deletion(a);
+    circular_queue_display_deletion(a,max);
 }
 void circular_queue_display_insertion(int *a)
 {
@@ -59,10 +59,10 @@ void circular_queue_display_insertion(int *a)
     }
     printf("\nThis was output of your chosen opeartion :) .");
 }
-void circular_queue_display_deletion(int *a)
+void circular_queue_display_deletion(int *a,int max)
 {
     int i;
-    for(i=((front>=0) ? front :0)+1;i<=rear;i++)
+    for(i=((front>=0) ? front :0)+1;i<=rear;i = (i + 1) % max)
     {
         printf("\nElement-%d:%d",i,a[i]);
     }
@@ -93,7 +93,7 @@ void main()
                 }
                 else if(plug==1)
                 {
-                    circular_queue_display_deletion(a);
+                    circular_queue_display_deletion(a,max);
                 }
         case 4:printf("\nExiting the Programme .......");
                exit(0);

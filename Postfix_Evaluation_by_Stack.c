@@ -69,3 +69,8 @@ void main()
     len=strlen(equ);
     postfix_evaluation(equ);
 }
+/* ***************************OUTPUT ***************************
+Enter the expression to evaluate:23+45+*32^/
+
+ Then Result of the postfix expression is:5
+*/
