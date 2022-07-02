@@ -62,7 +62,7 @@ void circular_queue_display_insertion(int *a)
 void circular_queue_display_deletion(int *a,int max)
 {
     int i;
-    for(i=((front>=0) ? front :0)+1;i<=rear;i = (i + 1) % max)
+    for(i=((front>=0) ? front :0)+1;i<=rear;i++)
     {
         printf("\nElement-%d:%d",i,a[i]);
     }
