@@ -22,13 +22,15 @@ void insert(int *a,int n)//inserting element in the array
 }
 void array_selection_sort(int *a,int n)//selection sort in an array
 {
-  int i,temp,j;
+  int i,temp,j,min_idx;
     for(i=0;i<n-1;i++)
     {
+        min_idx = i;
         for(j=i+1;j<n;j++)
         {
             if(a[i]>a[j])
             {
+                min_idx = j;
                 temp=a[i];
                 a[i] = a[j];
                 a[j] = temp;
