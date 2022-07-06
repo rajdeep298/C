@@ -1,7 +1,7 @@
 /*Quick Sort*/
 #include<stdio.h>
 #include<conio.h>
-int a[]={};
+int a[1000]={0};
 int partition(int l,int r);
 int Quick_Sort(int l,int r);
 void insert(int n);
