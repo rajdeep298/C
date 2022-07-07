@@ -1,4 +1,3 @@
-/*Binary Search Tree Creation and Traversal*/
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
@@ -12,7 +11,85 @@ int key;
 tnode *create_tnode();
 tnode *preorder_traversal(tnode *root);
 tnode *postorder_traversal(tnode *root);
+void*delete(tnode*root);
 void binary_search_tree_insertion();
+void binary_search_tree_insertion2(tnode *node);
+void binary_search_tree_insertion2(tnode *node)
+{
+    tnode*ptr=root,*ptr1,*new;
+    int flag =0;
+    while(ptr!=NULL && flag==0)
+    {
+        if(ptr->info>node->info) 
+        {  
+            ptr1=ptr;
+            ptr=ptr->left;
+        }
+        else if(ptr->info<node->info)
+        {
+            ptr1=ptr;
+            ptr=ptr->right;
+        }
+        else if(ptr->info==key)
+        {
+            printf("\nThis element already exists in the tree\nDuplicate Insertion Attempt");
+            flag=1;
+            exit(0);
+        }
+    }
+    if(ptr==NULL)
+    {
+        if(root==NULL)
+        {
+            root=create_tnode(key);
+        }
+        else
+        {
+            if(ptr1->info<node->info)
+            {
+                ptr1->right=node;
+            }
+            else
+            {
+                ptr1->left=node;
+            }
+        }
+    }    
+}
+void*delete(tnode*root)
+{
+    tnode *ptr = root,*temp1=NULL,*temp2=NULL,*parent;
+    if(key>ptr->info)
+    {
+        ptr=ptr->right;
+    }
+    if(key<ptr->info)
+    {
+        ptr=ptr->left;
+    }
+    if(ptr->info==key)
+    {
+        parent=ptr;
+        if(ptr->left!=NULL)
+        {
+            temp1=ptr->left;
+        }
+        if(ptr->right!=NULL)
+        {
+            temp2=ptr->right;
+        }
+        free(parent);
+        ptr=NULL;
+        if(temp1!=NULL)
+        {
+            binary_search_tree_insertion2(temp1);
+        }
+        if(temp2!=NULL)
+        {
+            binary_search_tree_insertion2(temp2);
+        }
+    }
+}
 tnode *inorder_traversal(tnode*root);
 tnode *inorder_traversal(tnode*root)
 {
@@ -135,77 +212,3 @@ void main()
         goto start;
     }
 }
-/*
-PS D:\Programming\C> gcc Tree-3.c
-PS D:\Programming\C> .\a.exe
-
-Enter the number you want to insert in the Binary Search Tree:50
-
-Preorder Traversal-->>
-50
-Inorder Traversal-->>
-50
-Postorder Traversal-->>
-50
-If you want to continue press y or Y
--->>
-Enter the number you want to insert in the Binary Search Tree:25
-
-Preorder Traversal-->>
-50      25
-Inorder Traversal-->>
-25      50
-Postorder Traversal-->>
-25      50
-If you want to continue press y or Y
--->>
-Enter the number you want to insert in the Binary Search Tree:75
-
-Preorder Traversal-->>
-50      25      75
-Inorder Traversal-->>
-25      50      75
-Postorder Traversal-->>
-25      75      50
-If you want to continue press y or Y
--->>
-Enter the number you want to insert in the Binary Search Tree:10
-
-Preorder Traversal-->>
-50      25      10      75
-Inorder Traversal-->>
-10      25      50      75
-Postorder Traversal-->>
-10      25      75      50
-If you want to continue press y or Y
--->>
-Enter the number you want to insert in the Binary Search Tree:15
-
-Preorder Traversal-->>
-50      25      10      15      75
-Inorder Traversal-->>
-10      15      25      50      75
-Postorder Traversal-->>
-15      10      25      75      50
-If you want to continue press y or Y
--->>
-Enter the number you want to insert in the Binary Search Tree:95
-
-Preorder Traversal-->>
-50      25      10      15      75      95
-Inorder Traversal-->>
-10      15      25      50      75      95
-Postorder Traversal-->>
-15      10      25      95      75      50
-If you want to continue press y or Y
--->>
-Enter the number you want to insert in the Binary Search Tree:65
-
-Preorder Traversal-->>
-50      25      10      15      75      65      95
-Inorder Traversal-->>
-10      15      25      50      65      75      95
-Postorder Traversal-->>
-15      10      25      65      95      75      50
-If you want to continue press y or Y
--->>*/
