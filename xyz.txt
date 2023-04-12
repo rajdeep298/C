@@ -1,0 +1,3 @@
+➡️No. of the charecters in the file:72
+➡️No. of the letters in the file:12
+➡️No. of the lines in the file:2
