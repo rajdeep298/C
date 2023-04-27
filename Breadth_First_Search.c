@@ -10,8 +10,8 @@ void main() {
     int n,i,j,front=-1,rear=-1,data,index=0;
     printf("\nEnter the number of nodes:");
     scanf("%d", &n);
-    int a[n][n];
-    node queue[n];
+    int a[100][100];
+    node queue[100];
     for ( i = 0;i<n;i++){
         printf("\nIf %d is connected to:",i+1);
         for( j = 0;j<n;j++){
@@ -32,22 +32,6 @@ void main() {
         for(j=0;j<n;j++){
             printf("%d\t",a[i][j]);
         }
-        printf("\n");
-    }
-    printf("\nConnected Vertices:");
-    while(front<n){
-        front++;
-        queue[front].index_number=0;
-        rear++;
-        for(i=0;i<n;i++){
-            if(a[rear][i]==1 && queue[i].visited==false && rear!=i){
-                front++;
-                queue[front].index_number=i;
-                queue[front].visited=true;
-                printf("%d\t%d,",rear,i);
-            }
-        }
-        queue[rear].visited=true;
         printf("\n");
     }
 }
