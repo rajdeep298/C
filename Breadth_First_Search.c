@@ -11,11 +11,11 @@ struct graph{
     int n;
 }g;
 int queue[100],front=-1,rear=-1;
-void push(int x){
+void enque(int x){
     rear++;
     queue[rear]=x;
 }
-int pop(){
+int dequeue(){
     front++;
     return queue[front];
 }
@@ -46,16 +46,16 @@ void Breadth_First_Search(){
         }
         w[0].source='*';
         w[0].status='!';
-        push(0);
+        enque(0);
         printf("\nOutput-1:Traversal_List=> ");
         while(front!=rear){
-            s=pop();
+            s=dequeue();
             w[s].status='!';
             w[s].dest=s;
             printf("%d,",s);
             for(i=0; i<g.n;i++){
                 if(g.a[s][i]!=0 &&w[i].status!='!' &&w[i].dest=='?'){
-                    push(i);
+                    enque(i);
                     w[i].status='#';
                     w[i].source=s;
                 }
@@ -66,7 +66,7 @@ void Breadth_First_Search(){
                 if(count==g.n)
                 {
                     print_data();
-                    front=g.n;
+                    front=rear;
                     break;
                 }
             }
