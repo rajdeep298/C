@@ -1,4 +1,4 @@
-/*C program to imeplement Prim's Algorithm*/
+/*C program to implement Prim's Algorithm*/
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
