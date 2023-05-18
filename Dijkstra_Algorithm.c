@@ -43,19 +43,19 @@ int FindMin(graph g, reference *w,int v){
     }
     return minpos;
 }
-int update(graph g,reference *w, int v){
+void update(graph g,reference *w, int v){
     int i,j;
     w[v].status='!';
     for(i=0;i<g.v;i++){
         if(g.w[v][i]!=0 && w[i].status=='?'){
             if(w[i].cost>(g.w[v][i]+w[v].cost)){
-                w[i].cost=g.w[v][i];
+                w[i].cost=g.w[v][i]+w[v].cost;
                 w[i].source=v;
             }
         }
     }
 }
-int Dijkstra(graph g,reference *w,int v){
+void Dijkstra(graph g,reference *w,int v){
     int minpos;
     initialize(g,w,v);
     while (1)
