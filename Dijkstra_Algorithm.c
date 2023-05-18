@@ -65,7 +65,6 @@ int Dijkstra(graph g,reference *w,int v){
             return 0;
         }
         update(g,w,minpos);
-        if(minpos ==v) return 0;
     }
 }
 void main(){
