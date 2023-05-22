@@ -30,23 +30,22 @@ void copy_structure(edgeList *e, MST_result *r,int min){
     r[r_len].status=e[min].status;
     r_len++;
 }
-void create_graph(graph g){
+void create_graph(){
+    int i,j;
     printf("Enter the number of vertices: ");
     scanf("%d",&g.v);
-    printf("Enter the adjacency matrix: \n");
-    for(int i=0;i<g.v;i++){
-        for(int j=0;j<g.v;j++){
-            for( j = 0;j<g.v;j++){
-                if(i==j){
-                    g.w[i][j] =0;
-                    continue;
-                }
-                else
-                {
-                    printf("\n%d press weights:",j+1);
-                    scanf("%d",&g.w[i][j]);
-                    g.v_status[i][j]='*';
-                }
+    printf("\nWeighted Matrix Input=>");
+     for ( i = 0;i<g.v;i++){
+        printf("\nIf %d is connected to:",i+1);
+        for( j = 0;j<g.v;j++){
+            if(i==j){
+                g.w[i][j] =0;
+                continue;
+            }
+            else
+            {
+                printf("\n%d input weight:",j+1);
+                scanf("%d",&g.w[i][j]);
             }
         }
     }
@@ -91,7 +90,7 @@ int FindMinEdge(edgeList *e){
 void getMST_Kruskal(graph g,edgeList *e){
     int c[100],minPos,maxCompNo,minCompNo;
     int n =0;
-    create_graph(g);
+    create_graph();
     getEdgeList(g,e);
     while(n!=g.v-1){
         minPos=FindMinEdge(e);
