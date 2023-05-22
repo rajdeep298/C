@@ -215,4 +215,4 @@ add_executable(C
         triangle.c
         union-1.c
         union-2.c
-        x.c)
+        x.c Kruskal's_Algorithm.c Kruskal's_Algorithm.c)
