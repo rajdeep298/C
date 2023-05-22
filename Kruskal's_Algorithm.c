@@ -52,7 +52,6 @@ void create_graph(graph g){
     }
 }
 void getEdgeList(graph g, edgeList *e){
-    e_len=0;
     for(int i=0;i<g.v;i++){
         for(int j=0;j<g.v;j++){
             if(g.w[i][j]!=0 && g.v_status[i][j]!='!' && g.v_status[j][i]!='!'){
@@ -109,4 +108,7 @@ void getMST_Kruskal(graph g,edgeList *e){
             n++;
         }
     }
+}
+void main(){
+    getMST_Kruskal(g,e);
 }
