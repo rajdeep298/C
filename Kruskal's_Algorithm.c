@@ -30,9 +30,16 @@ void copy_structure(edgeList *e, MST_result *r,int min){
     r[r_len].status=e[min].status;
     r_len++;
 }
-void create_graph(){
+void print_MST_result(MST_result *r){
+    int i;
+    printf("\nMST Result=>");
+    for(i=0;i<r_len;i++){
+        printf("\n%d->%d:%d",r[i].source,r[i].dest,r[i].weight);
+    }
+}
+graph create_graph(){
     int i,j;
-    printf("Enter the number of vertices: ");
+    printf("\nEnter the number of nodes: ");
     scanf("%d",&g.v);
     printf("\nWeighted Matrix Input=>");
      for ( i = 0;i<g.v;i++){
@@ -40,17 +47,20 @@ void create_graph(){
         for( j = 0;j<g.v;j++){
             if(i==j){
                 g.w[i][j] =0;
+                g.v_status[i][j]='*';
                 continue;
             }
             else
             {
                 printf("\n%d input weight:",j+1);
                 scanf("%d",&g.w[i][j]);
+                g.v_status[i][j]='*';
             }
         }
     }
+    return g;
 }
-void getEdgeList(graph g, edgeList *e){
+edgeList *getEdgeList(graph g, edgeList *e){
     for(int i=0;i<g.v;i++){
         for(int j=0;j<g.v;j++){
             if(g.w[i][j]!=0 && g.v_status[i][j]!='!' && g.v_status[j][i]!='!'){
@@ -62,6 +72,7 @@ void getEdgeList(graph g, edgeList *e){
             }
         }
     }
+    return e;
 }
 int FindMinEdge(edgeList *e){
     int minPos=0,i,j;
@@ -71,15 +82,10 @@ int FindMinEdge(edgeList *e){
             break;
         }
     }
-    for(i=0;i<=e_len;i++){
-        if(e[i].status==false){
-            minPos=i;
-        }
-    }
     if(i>e_len){
         return -1;
     }
-    for (j = i+1; i <=e_len ; i++)
+    for (j = i+1; i <e_len ; i++)
     {
         if(e[i].status==false && e[i].weight<e[minPos].weight){
             minPos=i;
@@ -90,8 +96,11 @@ int FindMinEdge(edgeList *e){
 void getMST_Kruskal(graph g,edgeList *e){
     int c[100],minPos,maxCompNo,minCompNo;
     int n =0;
-    create_graph();
-    getEdgeList(g,e);
+    g=create_graph();
+    e=getEdgeList(g,e);
+    for(int i=0;i<g.v;i++){
+        c[i]=i;
+    }
     while(n!=g.v-1){
         minPos=FindMinEdge(e);
         e[minPos].status=true;
@@ -107,6 +116,7 @@ void getMST_Kruskal(graph g,edgeList *e){
             n++;
         }
     }
+    print_MST_result(r);
 }
 void main(){
     getMST_Kruskal(g,e);
