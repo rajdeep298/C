@@ -15,7 +15,10 @@ struct reference{
     char status;
     char cost;
 }w[100];
+int a[100],k=0;
 typedef struct reference reference;
+void checkAndPrint_ShortestPath_Djikstra(graph g,reference *,int v,int source,int dest);
+void findShortestPath_Djikstra(graph g,reference *w,int v);
 int initialize(graph g,reference *w,int v){
     int i,j;
     for(i=0;i<g.v;i++){
@@ -55,7 +58,7 @@ void update(graph g,reference *w, int v){
         }
     }
 }
-void Dijkstra(graph g,reference *w,int v){
+int Dijkstra(graph g,reference *w,int v){
     int minpos;
     initialize(g,w,v);
     while (1)
@@ -65,6 +68,38 @@ void Dijkstra(graph g,reference *w,int v){
             return 0;
         }
         update(g,w,minpos);
+    }
+}
+void findShortestPath_Djikstra(graph g,reference *w,int v){
+    int i,j,source,dest,min;
+    printf("\nEnter the source node: ");
+    scanf("%d",&source);
+    printf("\nEnter the destination node: ");
+    scanf("%d",&dest);
+    source--;
+    dest--;
+    while(1){
+        for(i=0;i<g.v;i++){
+            if(w[i].dest==dest){
+                if(k==0)a[k++]=dest;
+                a[k++]=w[i].source;
+                checkAndPrint_ShortestPath_Djikstra(g,w,v,source,dest);
+                dest=w[i].source;
+                break;
+            }
+        }
+    }
+    
+}
+void checkAndPrint_ShortestPath_Djikstra(graph g,reference *,int v,int source,int dest){
+    int i,j;
+    if(a[k-1]==source){
+        printf("\nShortest Path from %d to %d is: ",a[k]+1,a[0]+1);
+        for(i=k-1;i>-1;i--){
+            printf("%d->",a[i]+1);
+        }
+        printf("\n");
+        exit(0);
     }
 }
 void main(){
@@ -87,4 +122,5 @@ void main(){
         }
     }
     Dijkstra(g,w,0);
+    findShortestPath_Djikstra(g,w,0);
 }
