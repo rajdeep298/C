@@ -52,7 +52,7 @@ void Breadth_First_Search(){
             s=dequeue();
             w[s].status='!';
             w[s].dest=s;
-            printf("%d,",s);
+            printf("%d,",s+1);
             for(i=0; i<g.n;i++){
                 if(g.a[s][i]!=0 &&w[i].status!='!' &&w[i].dest=='?'){
                     enque(i);
@@ -77,7 +77,7 @@ void print_data(){
     printf("\nOutput-2:Edge_list=> ");
     for(i=0;i<g.n;i++){
         if(w[i].source!='*' && w[i].dest!='?'){
-            printf("%d\t%d,",w[i].source,w[i].dest);
+            printf("%d\t%d,",w[i].source+1,w[i].dest+1);
         }
     }
     printf("\nOutput-3:Adjacency_Matrix=>\n");

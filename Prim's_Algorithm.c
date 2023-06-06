@@ -67,6 +67,13 @@ int MST_Prim(graph g,reference *w,int v){
         update(g,w,minpos);
     }
 }
+void weight_Prim(graph g,reference *w,int v){
+    int i,wt=0;
+    for(i=0;i<g.v;i++){
+        wt+=w[i].cost;
+    }
+    printf("\nWeight of the MST is: %d",wt);
+}
 void main(){
     int i,j;
     printf("\nEnter the number of nodes: ");
@@ -87,4 +94,5 @@ void main(){
         }
     }
     MST_Prim(g,w,0);
+    weight_Prim(g,w,0);
 }
