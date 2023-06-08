@@ -47,12 +47,12 @@ void Breadth_First_Search(){
         w[0].source='*';
         w[0].status='!';
         enque(0);
-        printf("\nOutput-1:Traversal_List=> ");
+        // printf("\nOutput-1:Traversal_List=> ");
         while(front!=rear){
             s=dequeue();
             w[s].status='!';
             w[s].dest=s;
-            printf("%d,",s+1);
+            // printf("%d,",s+1);
             for(i=0; i<g.n;i++){
                 if(g.a[s][i]!=0 &&w[i].status!='!' &&w[i].dest=='?'){
                     enque(i);
@@ -74,33 +74,33 @@ void Breadth_First_Search(){
 }
 void print_data(){
     int i,out_a[100][100],j;
-    printf("\nOutput-2:Edge_list=> ");
+    printf("\nOutput:Edge_list=> ");
     for(i=0;i<g.n;i++){
         if(w[i].source!='*' && w[i].dest!='?'){
             printf("%d\t%d,",w[i].source+1,w[i].dest+1);
         }
     }
-    printf("\nOutput-3:Adjacency_Matrix=>\n");
-    for(i=0;i<g.n;i++)
-    {
-        for(j=0;j<g.n;j++){
-            if(i==j){
-                out_a[i][j]=0;
-            }
-            else{
-                if(w[j].dest==i && w[j].source!='*' || w[j].source==i){
-                    if(w[j].dest!=i) out_a[i][w[j].dest]=1;
-                    else out_a[i][w[j].source]=1;
-                }
-            }
-        }
-    }
-    for(i=0;i<g.n;i++){
-        for(j=0;j<g.n;j++){
-            printf("%d\t",out_a[i][j]);
-        }
-        printf("\n");
-    }
+    // printf("\nOutput-3:Adjacency_Matrix=>\n");
+    // for(i=0;i<g.n;i++)
+    // {
+    //     for(j=0;j<g.n;j++){
+    //         if(i==j){
+    //             out_a[i][j]=0;
+    //         }
+    //         else{
+    //             if(w[j].dest==i && w[j].source!='*' || w[j].source==i){
+    //                 if(w[j].dest!=i) out_a[i][w[j].dest]=1;
+    //                 else out_a[i][w[j].source]=1;
+    //             }
+    //         }
+    //     }
+    // }
+    // for(i=0;i<g.n;i++){
+    //     for(j=0;j<g.n;j++){
+    //         printf("%d\t",out_a[i][j]);
+    //     }
+    //     printf("\n");
+    // }
 }
 void main(){
     Breadth_First_Search();

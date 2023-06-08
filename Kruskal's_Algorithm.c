@@ -31,11 +31,12 @@ void copy_structure(edgeList *e, MST_result *r,int min){
     r_len++;
 }
 void print_MST_result(MST_result *r){
-    int i;
+    int i,wt=0;
     printf("\nMST Result=>");
     for(i=0;i<r_len;i++){
-        printf("\n%d->%d:%d",r[i].source,r[i].dest,r[i].weight);
+        wt+=r[i].weight;
     }
+    printf("\nWeight of the MST is: %d",wt);
 }
 graph create_graph(){
     int i,j;
