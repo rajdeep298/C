@@ -9,16 +9,21 @@ void create_graph(){
     int i,j;
     printf("\nEnter the number of nodes: ");
     scanf("%d",&g.v);
-    printf("\nIf %d is connected to:",i+1);
-    for( j = 0;j<g.v;j++){
-        if(i==j){
-            g.a[i][j] =0;
-            continue;
-        }
-        else
-        {
-            printf("\n%d press 1:",j+1);
-            scanf("%d",&g.a[i][j]);
+    printf("\nEnter the number of nodes: ");
+    scanf("%d",&g.v);
+    printf("\nWeighted Matrix Input=>");
+     for ( i = 0;i<g.v;i++){
+        printf("\nIf %d is connected to:",i+1);
+        for( j = 0;j<g.v;j++){
+            if(i==j){
+                g.a[i][j] =0;
+                continue;
+            }
+            else
+            {
+                printf("\n%d input weight:",j+1);
+                scanf("%d",&g.a[i][j]);
+            }
         }
     }
 }
@@ -27,7 +32,8 @@ void Floyd_Warshall(graph g){
     char p[100][100];
     for(i=0;i<g.v;i++){
         for(j=0;j<g.v;j++){
-            if(g.a[i][j]==0)p[j][j] ='&';
+            if(g.a[i][j]==0 && i!=j)p[j][j] ='&';
+            else if(g.a[i][j]==0 && i==j)p[i][j] ='0';
             else p[i][j]=g.a[i][j];
         }
     }
@@ -39,5 +45,12 @@ void Floyd_Warshall(graph g){
                 }
             }
         }
+    }
+    printf("\nAll Pair Shortest Path=>");
+    for(i=0;i<g.v;i++){
+        for(j=0;j<g.v;j++){
+            printf("%c,",p[i][j]);
+        }
+        printf("\n");
     }
 }
