@@ -86,7 +86,7 @@ int FindMinEdge(edgeList *e){
     if(i>e_len){
         return -1;
     }
-    for (j = i+1; i <e_len ; i++)
+    for (j = i+1; j <e_len ; j++)
     {
         if(e[i].status==false && e[i].weight<e[minPos].weight){
             minPos=i;
