@@ -32,7 +32,11 @@ void copy_structure(edgeList *e, MST_result *r,int min){
 }
 void print_MST_result(MST_result *r){
     int i,wt=0;
-    printf("\nMST Result=>");
+    printf("\nMinimum Spanning Tree=>");
+    for(i=0;i<r_len;i++){
+        printf("%d->%d,",r[i].source+1,r[i].dest+1);
+    }
+    printf("\n");
     for(i=0;i<r_len;i++){
         wt+=r[i].weight;
     }
