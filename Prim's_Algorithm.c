@@ -69,6 +69,11 @@ int MST_Prim(graph g,reference *w,int v){
 }
 void weight_Prim(graph g,reference *w,int v){
     int i,wt=0;
+    printf("\nThe minimal spanning tree is:");
+    for(i=0;i<g.v;i++){
+        if(w[i].source!='*')
+            printf("%d->%d,",w[i].source+1,w[i].dest+1);
+    }
     for(i=0;i<g.v;i++){
         wt+=w[i].cost;
     }
