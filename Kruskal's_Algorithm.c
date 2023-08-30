@@ -79,7 +79,7 @@ edgeList *getEdgeList(graph g, edgeList *e){
     }
     return e;
 }
-int FindMinEdge(edgeList *e){
+int FindMinEdge(edgeList *e){//sorting edge list
     int minPos=0,i,j;
     for(i=0;i<e_len;i++){
         if(e[i].status==false){
